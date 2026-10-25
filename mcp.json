@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "jean-dalembert-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "DALEMBERT",
+        "TARGET_CHAIN": "Sui",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "solve_dalembert_wave_pde",
+          "description": "Solves vibrating string 1D wave equation u(x,t) = 1/2 [f(x-ct) + f(x+ct)]",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "wave_speed_c": {
+                "type": "number"
+              },
+              "initial_shape": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "wave_speed_c"
+            ]
+          }
+        },
+        {
+          "name": "compute_virtual_work_inertial_equilibrium",
+          "description": "Transforms dynamic equations of motion into equivalent static equilibrium using virtual displacements",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "generalized_coords": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "generalized_coords"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
